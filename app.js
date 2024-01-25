@@ -18,9 +18,9 @@ class Person {
       {const delIndex = this.hobbies.indexOf(delHobby);
        if (delIndex !== -1) 
                {this.hobbies.splice(delIndex, 1)}}
+     //this.hobbies = this.hobbies.filter((element) => {return element != delHobby});
     greeting() {console.log("Hello fellow person!")}
     }
-
 
 // Exercise 2 Section
 console.log("EXERCISE 2:\n==========\n");
@@ -29,9 +29,8 @@ class Coder extends Person {
         super(name, pets, residence, hobbies) 
         this.occupation = "Full Stack Web Developer";
     }
-    greeting() {console.log("Hello fellow code ninja!")}
+    greeting() {console.log("Hello fellow code ninja!")} //override Person logic
     }
-
 
 // Exercise 3 Section
 console.log("EXERCISE 3:\n==========\n");
@@ -51,11 +50,12 @@ let chuckw =
     chuckw.addHobby("Softball");
     chuckw.addHobby("Leadership");
     chuckw.addHobby("Astronomy");
+    const logChuckw = chuckw;
+    console.log(logChuckw);
     chuckw.removeHobby("Leadership");
 
 console.log(chuckw);
 chuckw.greeting();
-
 // Exercise 4 Section
 console.log("EXERCISE 4:\n==========\n");
 
@@ -63,16 +63,20 @@ class Calculator {
     constructor(){
     this.result = 0;}
     add(op1, op2)
-        {this.result = op1 + op2;
+        {if (op2 == undefined) {this.result += op1}
+          else {this.result = op1 + op2;}
          return this.result}
     subtract(op1, op2)
-        {this.result = op1 - op2;
+        {if (op2 == undefined) {this.result -= op1}
+          else {this.result = op1 - op2;}
          return this.result}
     multiply(op1, op2)
-        {this.result = op1 * op2;
+        {if (op2 == undefined) {this.result *= op1}
+          else {this.result = op1 * op2}
          return this.result}
     divide(op1, op2)
-        {this.result = op1 / op2;
+        {if (op2 == undefined) {this.result /= op1}
+        else {this.result = op1 / op2}
          return this.result}
     displayResult(){console.log(this.result)}
 }
@@ -82,4 +86,8 @@ console.log(`Check add 25 + 5 = ${myCalc.add(25,5)}`);
 console.log(`Check subtract 25 - 5 = ${myCalc.subtract(25,5)}`);
 console.log(`Check multiply 25 * 5 = ${myCalc.multiply(25,5)}`);
 console.log(`Check divide 25 / 5 = ${myCalc.divide(25,5)}`);
+console.log(`Check aad one paramenter = ${myCalc.add(25)}`);
+console.log(`Check sub one paramenter = ${myCalc.subtract(5)}`);
+console.log(`Check mult one paramenter = ${myCalc.multiply(5)}`);
+console.log(`Check div one paramenter = ${myCalc.divide(5)}`);
 myCalc.displayResult();
